@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
-public class Application {
+public class KApplication {
 
 	static int K = 10;
 	static String ifile = "datapoints.txt";
@@ -32,9 +32,9 @@ public class Application {
 		    job.addCacheFile(toCache.toUri());
 		    job.createSymlink();
 				     
-		    job.setJarByClass(Application.class);
-		    job.setMapperClass(Mapper.class);
-		    job.setReducerClass(Reducer.class);
+		    job.setJarByClass(KApplication.class);
+		    job.setMapperClass(KMapper.class);
+		    job.setReducerClass(KReducer.class);
 
 		    job.setInputFormatClass(TwoDPointFileInputFormat.class);
 		    FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
